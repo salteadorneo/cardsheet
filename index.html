@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardSheet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar no-print">
+    <h1>CardSheet</h1>
+
+    <p class="hint">Arrastra hasta N imágenes por página (o suéltalas todas a la vez, se acomodan solas). También puedes hacer clic en una casilla para elegir un archivo, o arrastrar cartas entre casillas para reordenarlas. Usa "Añadir página" para encadenar más hojas A4.</p>
+
+    <div class="sidebar-group sizes">
+      <span class="group-label">Tamaño</span>
+      <button class="preset" data-w="63" data-h="88" title="Pokémon / Magic: 9 unidades">Estándar 63×88 (9)</button>
+      <button class="preset" data-w="59" data-h="86" title="Yu-Gi-Oh!: 9 unidades">Yu-Gi-Oh! 59×86 (9)</button>
+      <button class="preset" data-w="56" data-h="87" title="Bridge: 9 unidades">Bridge 56×87 (9)</button>
+      <button class="preset" data-w="57" data-h="89" title="American: 9 unidades">American 57×89 (9)</button>
+      <button class="preset" data-w="44" data-h="63" title="Mini: 16 unidades (4×4)">Mini 44×63 (16)</button>
+      <button class="preset" data-w="44" data-h="67" title="Mini Europea: 14 unidades">Mini Europea 44×67 (14)</button>
+      <div class="custom-size">
+        <label>Ancho
+          <input type="number" id="cardWidth" value="63" min="10" max="200" step="0.5">
+        </label>
+        <label>Alto
+          <input type="number" id="cardHeight" value="88" min="10" max="280" step="0.5">
+        </label>
+      </div>
+    </div>
+
+    <div class="sidebar-group pages">
+      <button id="addPage">Añadir página</button>
+    </div>
+
+    <div class="sidebar-group actions">
+      <button id="printBtn">Imprimir</button>
+      <button id="pdfBtn">Descargar PDF</button>
+    </div>
+
+    <div class="sidebar-group reset">
+      <button id="clearAll" class="link-btn">Resetear</button>
+    </div>
+  </aside>
+
+  <main>
+    <div id="pagesContainer"></div>
+  </main>
+
+  <input type="file" id="fileInput" accept="image/*" multiple hidden>
+
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
